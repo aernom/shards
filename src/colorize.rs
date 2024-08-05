@@ -245,6 +245,16 @@ impl From<&str> for ColoredString {
 impl From<String> for ColoredString {
     fn from(value: String) -> Self {
         Self {
+            string: value,
+            foreground: Color::Default,
+            background: Color::Default,
+        }
+    }
+}
+
+impl From<&String> for ColoredString {
+    fn from(value: &String) -> Self {
+        Self {
             string: value.into(),
             foreground: Color::Default,
             background: Color::Default,
@@ -263,6 +273,12 @@ impl Colored for &str {
 }
 
 impl Colored for String {
+    fn colored(self) -> ColoredString {
+        self.into()
+    }
+}
+
+impl Colored for &String {
     fn colored(self) -> ColoredString {
         self.into()
     }
