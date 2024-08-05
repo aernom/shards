@@ -1,10 +1,10 @@
 [package]
 name = "shards"
 version = "0.1.0"
-authors = ["Aernom"]
+authors = ["aernom"]
 description = "Small Rust utilities"
-homepage = "https://github.com/Aernom/shards.git"
-repository = "https://github.com/Aernom/shards.git"
+homepage = "https://github.com/aernom/shards.git"
+repository = "https://github.com/aernom/shards.git"
 edition = "2021"
 
 [features]
