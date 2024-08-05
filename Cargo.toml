@@ -1,0 +1,9 @@
+[package]
+name = "shards"
+version = "0.1.0"
+authors = ["Aernom"]
+description = "Small Rust utilities"
+repository = ""
+edition = "2021"
+
+[dependencies]
