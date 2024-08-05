@@ -3,7 +3,14 @@ name = "shards"
 version = "0.1.0"
 authors = ["Aernom"]
 description = "Small Rust utilities"
-repository = ""
+homepage = "https://github.com/Aernom/shards.git"
+repository = "https://github.com/Aernom/shards.git"
 edition = "2021"
+
+[features]
+default = ["colorize"]
+
+colorize = []
+commands = []
 
 [dependencies]
