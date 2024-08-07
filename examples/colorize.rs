@@ -1,19 +1,19 @@
-use shards::colorize::Colored;
+use shards::colorize::Styled;
 
 fn main() {
-    println!("{}", "Black on yellow".colored().black().on_yellow());
-    println!("{}", "White on blue".colored().white().on_blue());
-    println!("{}", "Magenta on green".colored().magenta().on_green());
-    println!("{}", "Red on cyan".colored().red().on_cyan());
+    println!("{}", "Black on yellow".styled().black().on_yellow());
+    println!("{}", "White on blue".styled().white().on_blue());
+    println!("{}", "Magenta on green".styled().magenta().on_green());
+    println!("{}", "Red on cyan".styled().red().on_cyan());
     println!(
         "{}",
-        "rgb on rgb!".colored().rgb(166, 255, 0).on_rgb(55, 85, 88)
+        "rgb on rgb!".styled().rgb(166, 255, 0).on_rgb(55, 85, 88)
     );
 
     println!(
         "{}",
         "white on blue + bold + underlined"
-            .colored()
+            .styled()
             .rgb(255, 255, 255)
             .on_blue()
             .bold()
@@ -22,7 +22,7 @@ fn main() {
     println!(
         "{}",
         "black on yellow + dimmed + italic + strikethrough"
-            .colored()
+            .styled()
             .black()
             .on_yellow()
             .dimmed()
@@ -32,17 +32,17 @@ fn main() {
     println!(
         "{}",
         "black on yellow + not dimmed + italic + strikethrough"
-            .colored()
+            .styled()
             .black()
             .on_yellow()
             .italic()
             .strikethrough()
     );
-    println!("{}", "red on white".colored().red().on_rgb(255, 255, 255));
+    println!("{}", "red on white".styled().red().on_rgb(255, 255, 255));
     println!(
         "{}",
         "red on white + inverse"
-            .colored()
+            .styled()
             .red()
             .on_rgb(255, 255, 255)
             .inverse()
@@ -50,7 +50,7 @@ fn main() {
     println!(
         "{}\t<- Hidden",
         "red on white + hidden"
-            .colored()
+            .styled()
             .red()
             .on_rgb(255, 255, 255)
             .hidden()
@@ -58,7 +58,7 @@ fn main() {
     println!(
         "{}",
         "black on white + blinking"
-            .colored()
+            .styled()
             .rgb(0, 0, 0)
             .on_rgb(255, 255, 255)
             .blinking()
@@ -66,7 +66,7 @@ fn main() {
     println!(
         "{}",
         "some style applied + reset_all"
-            .colored()
+            .styled()
             .rgb(0, 0, 0)
             .on_rgb(255, 255, 255)
             .blinking()

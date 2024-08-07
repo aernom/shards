@@ -356,24 +356,24 @@ impl Mode {
     }
 }
 
-pub trait Colored {
-    fn colored(self) -> StyledString;
+pub trait Styled {
+    fn styled(self) -> StyledString;
 }
 
-impl Colored for &str {
-    fn colored(self) -> StyledString {
+impl Styled for &str {
+    fn styled(self) -> StyledString {
         self.into()
     }
 }
 
-impl Colored for String {
-    fn colored(self) -> StyledString {
+impl Styled for String {
+    fn styled(self) -> StyledString {
         self.into()
     }
 }
 
-impl Colored for &String {
-    fn colored(self) -> StyledString {
+impl Styled for &String {
+    fn styled(self) -> StyledString {
         self.into()
     }
 }
