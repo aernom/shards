@@ -5,7 +5,7 @@ pub struct StyledString {
     pub string: String,
     pub foreground: Color,
     pub background: Color,
-    pub modes: HashSet<Mode>,
+    pub variants: HashSet<Variant>,
 }
 
 impl StyledString {
@@ -151,35 +151,35 @@ impl StyledString {
 
     // Style utilities
     pub fn bold(mut self) -> Self {
-        self.modes.insert(Mode::Bold);
+        self.variants.insert(Variant::Bold);
         self
     }
     pub fn dimmed(mut self) -> Self {
-        self.modes.insert(Mode::Dimmed);
+        self.variants.insert(Variant::Dimmed);
         self
     }
     pub fn italic(mut self) -> Self {
-        self.modes.insert(Mode::Italic);
+        self.variants.insert(Variant::Italic);
         self
     }
     pub fn underlined(mut self) -> Self {
-        self.modes.insert(Mode::Underlined);
+        self.variants.insert(Variant::Underlined);
         self
     }
     pub fn blinking(mut self) -> Self {
-        self.modes.insert(Mode::Blinking);
+        self.variants.insert(Variant::Blinking);
         self
     }
     pub fn inverse(mut self) -> Self {
-        self.modes.insert(Mode::Inverse);
+        self.variants.insert(Variant::Inverse);
         self
     }
     pub fn hidden(mut self) -> Self {
-        self.modes.insert(Mode::Hidden);
+        self.variants.insert(Variant::Hidden);
         self
     }
     pub fn strikethrough(mut self) -> Self {
-        self.modes.insert(Mode::Strikethrough);
+        self.variants.insert(Variant::Strikethrough);
         self
     }
 
@@ -193,13 +193,13 @@ impl StyledString {
         self
     }
     pub fn reset_modes(mut self) -> Self {
-        self.modes.clear();
+        self.variants.clear();
         self
     }
     pub fn reset_all_styles(mut self) -> Self {
         self.foreground = Color::Default;
         self.background = Color::Default;
-        self.modes.clear();
+        self.variants.clear();
         self
     }
 }
@@ -207,7 +207,7 @@ impl StyledString {
 impl Display for StyledString {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         let codes: Vec<String> = self
-            .modes
+            .variants
             .iter()
             .map(|s| s.code())
             .chain([self.foreground.fg_code(), self.background.bg_code()])
@@ -227,7 +227,7 @@ impl From<&str> for StyledString {
             string: value.into(),
             foreground: Color::Default,
             background: Color::Default,
-            modes: HashSet::new(),
+            variants: HashSet::new(),
         }
     }
 }
@@ -238,7 +238,7 @@ impl From<String> for StyledString {
             string: value,
             foreground: Color::Default,
             background: Color::Default,
-            modes: HashSet::new(),
+            variants: HashSet::new(),
         }
     }
 }
@@ -249,7 +249,7 @@ impl From<&String> for StyledString {
             string: value.into(),
             foreground: Color::Default,
             background: Color::Default,
-            modes: HashSet::new(),
+            variants: HashSet::new(),
         }
     }
 }
@@ -330,7 +330,7 @@ impl Default for Color {
 }
 
 #[derive(PartialEq, Eq, Hash)]
-pub enum Mode {
+pub enum Variant {
     Bold,
     Dimmed,
     Italic,
@@ -341,17 +341,17 @@ pub enum Mode {
     Strikethrough,
 }
 
-impl Mode {
+impl Variant {
     fn code(&self) -> String {
         match self {
-            Mode::Bold => "1".into(),
-            Mode::Dimmed => "2".into(),
-            Mode::Italic => "3".into(),
-            Mode::Underlined => "4".into(),
-            Mode::Blinking => "5".into(),
-            Mode::Inverse => "7".into(),
-            Mode::Hidden => "8".into(),
-            Mode::Strikethrough => "9".into(),
+            Variant::Bold => "1".into(),
+            Variant::Dimmed => "2".into(),
+            Variant::Italic => "3".into(),
+            Variant::Underlined => "4".into(),
+            Variant::Blinking => "5".into(),
+            Variant::Inverse => "7".into(),
+            Variant::Hidden => "8".into(),
+            Variant::Strikethrough => "9".into(),
         }
     }
 }
