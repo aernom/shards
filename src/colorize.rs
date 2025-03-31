@@ -254,7 +254,9 @@ impl From<&String> for StyledString {
     }
 }
 
+#[derive(Default)]
 pub enum Color {
+    #[default]
     Default,
     Black,
     Red,
@@ -320,12 +322,6 @@ impl Color {
             Color::BrightWhite => "107".into(),
             Color::RGB(r, g, b) => format!("48;2;{};{};{}", r, g, b),
         }
-    }
-}
-
-impl Default for Color {
-    fn default() -> Self {
-        Color::Default
     }
 }
 
